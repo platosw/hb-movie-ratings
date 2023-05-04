@@ -31,3 +31,20 @@ for movie in movie_data:
     
 model.db.session.add_all(movies_in_db)
 model.db.session.commit()
+
+
+for n in range(10):
+    email = f'user{n}@test.com'
+    password = 'test'
+
+    new_user = crud.create_user(email, password)
+    model.db.session.add(new_user)
+
+    for _ in range(10): #꼭!!! 질문할 것!!!
+        score = randint(1, 5)
+        movie = choice(movies_in_db)
+        new_rating = crud.create_rating(score, movie, new_user)
+        model.db.session.add(new_rating)
+
+
+model.db.session.commit()
