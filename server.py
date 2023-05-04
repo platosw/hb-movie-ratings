@@ -11,7 +11,9 @@ app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
 
 
-# Replace this with routes and view functions!
+@app.route('/')
+def show_homepage():
+    return render_template('homepage.html')
 
 
 if __name__ == "__main__":
