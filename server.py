@@ -33,8 +33,9 @@ def show_users():
     return render_template('users.html', users=users)
 
 
-@app.route('/users/<user_id>')
-def show_user(user_id):
+@app.route('/user_data')
+def show_user():
+    user_id = request.args.get("user_id")
     user = crud.get_user_by_id(user_id)
     return render_template('user_data.html', user=user)
 
