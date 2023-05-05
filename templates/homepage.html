@@ -7,4 +7,29 @@ body%}
     <li><a href="/movies">View all movies</a></li>
     <li><a href="/users">View all users</a></li>
 </ul>
-{%endblock%}
+
+<h2>Create an Account</h2>
+<form action="/users" method="POST">
+    <p>Email <input type="text" name="email" /></p>
+
+    <p>Password <input type="password" name="password" /></p>
+
+    <p>
+        <input type="submit" />
+    </p>
+</form>
+
+{% if 'user' not in session %}
+<h2>Log In</h2>
+<form action="/login" method="POST">
+    <p>Email <input type="text" name="email" /></p>
+
+    <p>Password <input type="password" name="password" /></p>
+
+    <p>
+        <input type="submit" />
+    </p>
+</form>
+{% endif %} {% if 'user' in session %}
+<button><a href="/logout">Log Out</a></button>
+{% endif %} {%endblock%}

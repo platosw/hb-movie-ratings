@@ -11,6 +11,10 @@ def get_users():
 def get_user_by_id(id):
     return User.query.get(id)
 
+def get_user_by_email(emailData):
+    return User.query.filter_by(email=emailData).first() # 이 코드는 값이 없으면 None을 반환한다.
+
+
 def create_movie(title, overview, release_date, poster_path):
     movie = Movie(title=title, overview=overview, release_date=release_date, poster_path=poster_path)
     return movie
